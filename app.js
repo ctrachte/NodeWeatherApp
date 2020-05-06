@@ -7,6 +7,8 @@ setTimeout(() => {
     console.log('2 Second Timer Popped!')
 }, 2000)
 
-
+setTimeout(() => {
+    console.log('Immediate Timer Popped!')
+}, 0)
 
 console.log('Stopping ...')
