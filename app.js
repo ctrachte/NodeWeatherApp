@@ -27,7 +27,7 @@ request({ url: weatherUrl, json: true }, (error, response) => {
         console.log(error)
     } else {
         let data = response.body.current
-        let message = "It is currently " + data.temperature + "F but it feels like " + data.feelslike + "F."
+        let message = data.weather_descriptions[0] + ". It is currently " + data.temperature + "F but it feels like " + data.feelslike + "F."
         console.log(message)
     }
 })
