@@ -17,16 +17,17 @@
 const request = require('postman-request')
 const long = '-92.016712'
 const lat =  '34.957049'
+const units = 'f'
 const access_key = '89cc5db32cd40ec478c4b603d3ec4460'
 
-let weatherUrl = `http://api.weatherstack.com/current?access_key=${access_key}&query=${lat},${long}`
+let weatherUrl = `http://api.weatherstack.com/current?access_key=${access_key}&query=${lat},${long}&units=${units}`
 
 request({ url: weatherUrl, json: true }, (error, response) => {
     if (error) {
         console.log(error)
     } else {
-        let data = response.body.current;
-        let message = "It is currently " + data.temperature + "C but it feels like " + data.feelslike + "C"
-        console.log(message);
+        let data = response.body.current
+        let message = "It is currently " + data.temperature + "F but it feels like " + data.feelslike + "F."
+        console.log(message)
     }
 })
