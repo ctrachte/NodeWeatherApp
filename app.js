@@ -21,11 +21,12 @@ const access_key = '89cc5db32cd40ec478c4b603d3ec4460'
 
 let weatherUrl = `http://api.weatherstack.com/current?access_key=${access_key}&query=${lat},${long}`
 
-request({ url: weatherUrl }, (error, response) => {
+request({ url: weatherUrl, json: true }, (error, response) => {
     if (error) {
         console.log(error)
     } else {
-        const data = JSON.parse(response.body)
-        console.log(data)
+        let data = response.body.current;
+        let message = "It is currently " + data.temperature + "C but it feels like " + data.feelslike + "C"
+        console.log(message);
     }
 })
