@@ -17,22 +17,22 @@
 
 // Lesson 6.32, WeatherStack API
 const request = require('postman-request')
-const long = '-92.016712'
-const lat =  '34.957049'
+let long = '-92.016712'
+let lat =  '34.957049'
 const units = 'f'
 const WeatherStackTokenID = '89cc5db32cd40ec478c4b603d3ec4460'
 
 let weatherUrl = `http://api.weatherstack.com/current?access_key=${WeatherStackTokenID}&query=${lat},${long}&units=${units}`
 
-// request({ url: weatherUrl, json: true }, (error, response) => {
-//     if (error) {
-//         console.log(error)
-//     } else {
-//         let data = response.body.current
-//         let message = data.weather_descriptions[0] + ". It is currently " + data.temperature + "F but it feels like " + data.feelslike + "F."
-//         console.log(message)
-//     }
-// })
+request({ url: weatherUrl, json: true }, (error, response) => {
+    if (error) {
+        console.log("Unable to connect to WeatherStack Service")
+    } else {
+        let data = response.body.current
+        let message = data.weather_descriptions[0] + ". It is currently " + data.temperature + "F but it feels like " + data.feelslike + "F."
+        console.log(message)
+    }
+})
 
 // Lesson 6.33, Geocaching API
 // User input address -> get Lat/Long -> get weather
@@ -42,10 +42,10 @@ const mapBoxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angel
 
 request({ url: mapBoxURL, json: true }, (error, response) => {
     if (error) {
-        console.log(error)
+        console.log("Unable to connect to MapBox Service!")
     } else {
-        lat = response.body.features[0].center[1]
-        long = response.body.features[0].center[0]
-        // console.log(data[0].center)
+        long = response.body.features[0].center[1]
+        lat = response.body.features[0].center[0]
+        console.log(lat, long)
     }
 })
