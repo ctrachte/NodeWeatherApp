@@ -53,3 +53,19 @@ request({ url: mapBoxURL, json: true }, (error, response) => {
         console.log(lat, long)
     }
 })
+
+// lesson 6.35
+const geoCode = (address, callback) => {
+    setTimeout(() => {
+        const data = {
+            latitiude: 0,
+            longitude: 0
+        }
+        callback(data)
+    }, 2000)
+
+}
+
+geoCode('Philadelphia', (data) => {
+    console.log(data)
+})
