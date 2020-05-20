@@ -54,7 +54,7 @@ request({ url: mapBoxURL, json: true }, (error, response) => {
     }
 })
 
-// lesson 6.35
+// lesson 6.35 - async callbacks
 const geoCode = (address, callback) => {
     setTimeout(() => {
         const data = {
@@ -66,6 +66,6 @@ const geoCode = (address, callback) => {
 
 }
 
-geoCode('Philadelphia', (data) => {
-    console.log(data)
-})
+// geoCode('Philadelphia', (data) => {
+//     console.log(data)
+// })
